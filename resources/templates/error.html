@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<title>Registration App</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/
+		css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	</head>
+	<body th:style="'background: url(/images/background.png);'">
+				<div th:replace="~{navbar :: menunav}"></div>
+		<div class=".container">
+			<center>
+				<div class="col-sm">
+				<h1 style="color: red;">Error!</h1>
+				</div>
+				
+		<img src="images/error-icon.png" class=".img-responsive" alt="error icon" width="304" height="236">
+					
+			<div class="col-sm">		
+       <h1 th:text="${'Status Code: ' + status}"> </h1>
+       </div>
+       <div>
+        <h1 th:text="${error}"> </h1>
+       </div>       
+		</center>
+		<div class="col-sm">
+       <a class="btn" href="/"> <h1> Back home </h1></a>
+       </div>
+		</div>
+	</body>
+</html>

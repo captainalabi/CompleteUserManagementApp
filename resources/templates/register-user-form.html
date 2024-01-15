@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<title>registration</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/
+		css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	</head>
+	<body>
+		<!--create navigation bar-->
+		<div th:replace="~{navbar :: menunav}"></div>
+		
+		<!--create html registration form-->
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-md-6 col-md-offset-3">
+					<!--display success message-->
+					
+										
+					<div th:if="${userDTO.id}">
+						<h1>Edit User/ Assign Role</h1>
+					</div>
+					<div th:unless="${userDTO.id}">
+						<h1>Registration</h1>
+						<div th:text="${successMessage}" class="alert-info"></div>
+					</div>
+				<form th:action="@{/saveUser}" method="post" th:object="${userDTO}">
+					
+						<input type="hidden" id="id" th:field="${userDTO.id}" th:value="${userDTO.id}"/>
+					
+					<div class="form-group">
+						<label class="control-label" for="firstName">First Name</label>
+						<input id="firstName" class="form-control" th:field="${userDTO.firstName}"
+						 required autofocus="autofocus" th:readonly="*{id}"
+						 th:minlength="3" th:maxlength="21"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="lastName">Last Name</label>
+						<input id="lastName" class="form-control" th:field="${userDTO.lastName}"
+						 required autofocus="autofocus" th:readonly="*{id}"
+						 th:minlength="3" th:maxlength="21"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="email">email</label>
+						<input type="email" id="email" class="form-control" th:field="${userDTO.email}"
+						 required autofocus="autofocus" th:readonly="${userDTO.id}"
+						 th:minlength="8" th:maxlength="50"/>
+					</div>
+					<div th:unless="*{id}">
+					<div class="form-group">
+						<label class="control-label" for="password">Password</label>
+						<input type="password" id="password" class="form-control" th:field="${userDTO.password}"
+						 required autofocus="autofocus" th:readonly="${userDTO.id}"
+						 th:minlength="8" th:maxlength="21"/>
+					</div>
+					</div>
+					
+					<div th:if="*{id}"
+					<div class="form-group row p-1">
+			  <label for="name" class="col-form-label col-sm-4">Roles:</label>
+			   <div class="col-sm-8">
+			  <select th:field="*{roles}"  name="roles" class="form-control" required>
+				   <option text=" " value=" ">Select Role</option>
+				  <th:block th:each="role:${roleList}">
+				   <option th:text="${role.name}" th:value="${role.id}"/>
+				  </th:block>
+			  </select>
+			  </div>
+		  			</div>
+		  			</div>
+		  			</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Save</button>
+						<span>Already Registered?<a th:href="@{/login}">Login Here</a></span>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
