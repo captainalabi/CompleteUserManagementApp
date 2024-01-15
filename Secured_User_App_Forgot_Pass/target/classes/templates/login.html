@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<title>login</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/
+		css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	</head>
+	<body>
+		<!--include navigation bar-->
+		<div th:replace="~{navbar :: menunav}"></div>
+		
+		<!--create html login form-->
+		<div class="container">
+			<div class="roiw">
+				<div class="col-md-6 col-md-offset-3">
+					
+					<h1>Login</h1>
+					<form th:action="@{/login}" method="post">
+					
+					<!--display error message-->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid Username or Password!</div>						
+					</div>
+					
+					<!--display logout message-->
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You Have been logged out!</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" for="username">Username</label>
+						<input type="text" id="username" name="username" class="form-control" 
+						placeholder="Enter email ID" required autofocus="autofocus"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="password">Password</label>
+						<input type="password" id="password" name="password" class="form-control"
+						placeholder="Enter Password" required autofocus="autofocus"/>
+					</div>
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+						<input type="submit" name="login-submit" id="login-submit"
+						class="form-control-btn btn-primary" value="log In">
+						<span>New User ? <a th:href="@{/addnewuser}">Register Here</a></span>
+						
+						<a th:href="@{/forgot_password}">forgot password ?</a>
+					</div>
+					</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

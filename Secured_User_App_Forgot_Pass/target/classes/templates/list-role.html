@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<title>roles</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/
+		css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	</head>
+	<body>
+		<!--navigation bar-->
+		<div th:replace="navbar :: menunav"></div>
+		
+		
+		<div class="container">
+			<div class="roiw">
+				<h3 class="col-md-6 col-md-offset-3">
+					<br><br>
+					<h3>Roles</h3>
+					<table border="1" class="table table-bordered table-striped" id="book-table">
+				<thead>
+					<tr>
+					<th>User Roles</th>
+					<th></th>
+					
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="role:${roles}">
+						<td th:text="${role.name}"></td>
+						
+						<td>
+						<a th:href="@{/editRole(id=${role.id})}" class="btn btn-info">Edit</a>
+						</td>	
+										
+						<td>
+							<a th:href="@{/deleteRole(id=${role.id})}" class="btn btn-danger bm-2">Delete</a>
+						</td>
+					</tr>					
+				</tbody>				
+			</table>
+			</div>
+		</div>
+	</body>
+</html>

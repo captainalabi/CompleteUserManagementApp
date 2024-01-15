@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	
+	<head>
+		<title>Registration App</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/
+		css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	</head>
+	<body>
+				<div th:replace="~{navbar :: menunav}"></div>
+		<div class=".container">
+			<div class="text-center">
+				<h2>User Verification</h2>
+			<h4>Congratulations! Your Account Has Been Verified</h4>
+			<p><a th:href="@{/login}"></a>Login Now</p>
+			</div>
+		<div class="col-sm">
+       <a class="btn" href="/"> <h1> Back home </h1></a>
+       </div>
+		</div>
+	</body>
+</html>
